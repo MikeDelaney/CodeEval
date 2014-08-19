@@ -16,7 +16,7 @@ def number_pairs(input_list, x):
 if __name__ == '__main__':
     inputfile = sys.argv[1]
     with open(inputfile, 'r') as f:
-        for line in f.readlines():
+        for line in f:
             line = line.rstrip().split(';')
             if line:
                 input_list, x = [int(num) for num in line[0].split(',')],\
