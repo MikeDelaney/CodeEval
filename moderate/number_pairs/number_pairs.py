@@ -1,18 +1,16 @@
 import sys
+from itertools import combinations
 
 
 def number_pairs(input_list, x):
-    retval = 'NULL'
-    checked = set([])
-    for number in input_list:
-        if number < x:
-            diff = x - number
-            if diff in input_list and diff not in checked:
-                checked = checked | {number}
-                retval += '{0},{1};'.format(number, diff)
-    if len(retval) > 4:
-        return retval[4:-1]
-    return retval
+    """
+    Inspired by https://gist.github.com/yuhei0718/2765371
+    My solution was much clunkier
+    """
+    pairs = [combo for combo in combinations(input_list, 2) if sum(combo) == x]
+    if pairs:
+        return ';'.join(['{0},{1}'.format(item[0], item[1])for item in pairs])
+    return 'NULL'
 
 
 if __name__ == '__main__':
