@@ -8,6 +8,7 @@ def trans_dict():
                   'D': 500, 'M': 1000}
     return trans_dict
 
+
 def test_aromatic1(trans_dict):
     translation = trans_dict
     target = '3M1D2C'
