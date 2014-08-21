@@ -1,12 +1,18 @@
 import sys
 
 
+def genfib():
+    first, second = 0, 1
+    while True:
+        yield first
+        first, second = second, first + second
+
+
 def fib(number):
-    if not number:
-        return 0
-    if number == 1:
-        return 1
-    return fib(number - 1) + fib(number - 2)
+    fibs = genfib()
+    for i in xrange(number + 1):
+        retval = fibs.next()
+    return retval
 
 
 if __name__ == '__main__':
