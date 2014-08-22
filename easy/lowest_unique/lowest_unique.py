@@ -3,10 +3,10 @@ import sys
 
 def lowest_unique(int_list):
     numbers = {}
-    for index in range(len(int_list)):
-        group = numbers.setdefault(int(int_list[index]), [])
+    for index, number in enumerate(int_list):
+        group = numbers.setdefault(int(number), [])
         group.append(index)
-    for number in numbers:
+    for number in sorted(numbers.keys()):
         retval = numbers[number]
         if len(retval) == 1:
             return retval[0] + 1
