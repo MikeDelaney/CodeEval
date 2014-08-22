@@ -2,9 +2,10 @@ import sys
 
 
 def lowest_unique(int_list):
-    numbers = {i: [] for i in xrange(1, 10)}
+    numbers = {}
     for index in range(len(int_list)):
-        numbers[int(int_list[index])].append(index)
+        group = numbers.setdefault(int(int_list[index]), [])
+        group.append(index)
     for number in numbers:
         retval = numbers[number]
         if len(retval) == 1:
@@ -16,5 +17,6 @@ if __name__ == '__main__':
     inputfile = sys.argv[1]
     with open(inputfile, 'r') as f:
         for line in f:
-            if line:
-                print str(lowest_unique(line.rstrip().split()))
+            line_list = line.rstrip().split()
+            if line_list:
+                print str(lowest_unique(line_list))
