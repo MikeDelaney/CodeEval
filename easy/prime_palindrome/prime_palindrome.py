@@ -18,7 +18,13 @@ def gen_primes():
 
 
 def is_palindrome(number):
-    return str(number) == ''.join(reversed(str(number)))
+    rev = 0
+    n = number
+    while n > 0:
+        dig = n % 10
+        rev = rev * 10 + dig
+        n = n / 10
+    return number == rev
 
 
 if __name__ == '__main__':
