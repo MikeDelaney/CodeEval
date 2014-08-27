@@ -1,7 +1,8 @@
 import sys
 
 
-def reverse_add(number):
+def reverse_add(line):
+    number = int(line.rstrip())
     count = 0
     while not is_palindrome(number) and count < 100:
         number += reverse_number(number)
@@ -26,6 +27,4 @@ def is_palindrome(number):
 if __name__ == '__main__':
     with open(sys.argv[1], 'r') as f:
         for line in f:
-            line = line.rstrip()
-            if line:
-                print reverse_add(int(line))
+            print reverse_add(line)
