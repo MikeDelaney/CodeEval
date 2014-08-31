@@ -18,7 +18,6 @@ def beautiful_strings(line):
 
 
 if __name__ == '__main__':
-    from pdb import set_trace; set_trace()
     with open(sys.argv[1], 'rt') as f:
         for line in f:
             print beautiful_strings(line)
