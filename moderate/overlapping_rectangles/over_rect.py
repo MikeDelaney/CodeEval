@@ -4,15 +4,15 @@ import sys
 def over_rect(line):
     line = line.rstrip()
     if line:
-        line = line.split(',')
-        rect_a = [int(item) for item in line[:4]]
-        rect_b = [int(item) for item in line[4:]]
-        return (rect_a[0] <= rect_b[0] <= rect_a[2] and
-                (rect_a[3] <= rect_b[1] <= rect_a[1] or
-                rect_a[3] <= rect_b[3] <= rect_a[1])) or \
-            (rect_b[0] <= rect_a[0] <= rect_b[2] and
-                (rect_b[3] <= rect_a[1] <= rect_b[1] or
-                    rect_b[3] <= rect_a[3] <= rect_b[1]))
+        xula, yula, xlra, ylra, xulb, yulb, xlrb, ylrb = (int(i) for i
+                                                          in line.split(','))
+        h_overlap = True
+        v_overlap = True
+        if xlrb < xula or xulb > xlra:
+            h_overlap = False
+        if yulb < ylra or ylrb > yula:
+            v_overlap = False
+        return h_overlap and v_overlap
 
 
 if __name__ == '__main__':
